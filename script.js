@@ -1,3 +1,5 @@
+
+
 function computerPlay() {
     const a = Math.floor(Math.random() * 3);
     if (a == 0) {
@@ -11,31 +13,39 @@ function computerPlay() {
     }
 }
 
-function round() {
+function round(player) {
+    const sentence = document.getElementById('sentence');
+    const winner = document.getElementById('winner');
+    const counter = document.getElementById('counter');
     const computer = computerPlay();
-    const inputChoice = prompt('Enter rock paper or scissors').toLowerCase();
-    let player = null;
-    player = inputChoice;
-    alert('Computer chose ' + computer);
+    
+    sentence.textContent = 'Computer chose ' + computer;
+
     if (player === computer) {
-        alert('You both chose ' + player + ', tie!')
+        winner.textContent = ('You both chose ' + player + ', tie!')
     }
     else if (player === 'rock' && computer === 'scissors') {
-        alert('Rock beats scissors, you win!')
+        winner.textContent = ('Rock beats scissors, you win!')
+        counter.textContent = (parseInt(counter.textContent) + 1).toString();
     }
     else if (player === 'paper' && computer === 'rock') {
-        alert('Paper beats rock, you win!')
+        winner.textContent = ('Paper beats rock, you win!')
+        counter.textContent = (parseInt(counter.textContent) + 1).toString();
     }
     else if (player === 'scissors' && computer === 'paper') {
-        alert('Scissors beat paper, you win!')
+        winner.textContent = ('Scissors beat paper, you win!')
+        counter.textContent = (parseInt(counter.textContent) + 1).toString();
     }
     else if (player === 'scissors' && computer === 'rock') {
-        alert('Rock beats scissors, computer wins!')
+        winner.textContent = ('Rock beats scissors, computer wins!')
+        counter.textContent = (parseInt(counter.textContent) - 1).toString();
     }
     else if (player === 'rock' && computer === 'paper') {
-        alert('Paper beats rock, computer wins!')
+        winner.textContent = ('Paper beats rock, computer wins!')
+        counter.textContent = (parseInt(counter.textContent) - 1).toString();
     }
     else if (player === 'paper' && computer === 'scissors') {
-        alert('Scissors beat paper, computer wins!')
+        winner.textContent = ('Scissors beat paper, computer wins!')
+        counter.textContent = (parseInt(counter.textContent) - 1).toString();
     }
 }
